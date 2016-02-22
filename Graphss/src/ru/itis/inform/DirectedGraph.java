@@ -1,7 +1,7 @@
 package ru.itis.inform;
 
- interface Graph {
 
+public interface DirectedGraph {
     /**
      * Добавление вершины в граф
      */
@@ -15,7 +15,7 @@ package ru.itis.inform;
      * @param vertexB вторая вершина
      * @param weight вес ребра
      */
-    void addEdge(int vertexA, int vertexB, int weight);
+    void addDirectedEdge(int vertexA, int vertexB, int weight);
 
     /**
      * Вывод графа на экран

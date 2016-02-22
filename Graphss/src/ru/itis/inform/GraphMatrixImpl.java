@@ -1,7 +1,7 @@
 package ru.itis.inform;
 
 
-public class GraphMatrixImpl implements Graph {
+public class GraphMatrixImpl implements Graph, DirectedGraph {
 
     private static final int DEFAULT_SIZE = 50;
     /**
@@ -44,9 +44,17 @@ public class GraphMatrixImpl implements Graph {
     }
 
     @Override
+    public void addDirectedEdge(int vertexA, int vertexB, int weight) {
+        if (vertexA < verticesCount && vertexB < verticesCount) {
+            this.matrix[vertexA][vertexB] = weight;
+        } else throw new IllegalArgumentException();
+    }
+
+    @Override
     public void addEdge(int vertexA, int vertexB, int weight) {
         if (vertexA < verticesCount && vertexB < verticesCount) {
             this.matrix[vertexA][vertexB] = weight;
+            this.matrix[vertexB][vertexA] = weight;
         } else throw new IllegalArgumentException();
     }
 
@@ -58,5 +66,10 @@ public class GraphMatrixImpl implements Graph {
             }
             System.out.println(matrix[i][verticesCount - 1]);
         }
+    }
+
+    @Override
+    public void runFloyd() {
+
     }
 }
